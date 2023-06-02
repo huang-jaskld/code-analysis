@@ -1,13 +1,14 @@
 exports.browserPlugin = function (analysisContext) {
   const mapName = "browserMap";
 
+  analysisContext[mapName] = {};
+
   function isBrowserCheck(
     context,
     tsCompiler,
     node,
     depth,
     apiName,
-    matchImportItem,
     filePath,
     projectName,
     httpRepo,
@@ -56,7 +57,7 @@ exports.browserPlugin = function (analysisContext) {
 
   return {
     mapName,
-    checkFun: isApiCheck,
+    checkFun: isBrowserCheck,
     afterHook: null,
   };
 };
