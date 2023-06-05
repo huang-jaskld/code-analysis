@@ -1,3 +1,5 @@
+const { anyTypePlugin } = require("./customPlugins/anyTypePlugin");
+
 module.exports = {
   scanSource: [
     {
@@ -10,7 +12,7 @@ module.exports = {
     },
   ],
   analysisTarget: ["ora", "path"], // 必须，要分析的目标依赖名
-  analysisPlugins: [], // 可选，自定义分析插件，默认为空数组，一般不需要配置
+  analysisPlugins: [anyTypePlugin], // 可选，自定义分析插件，默认为空数组，一般不需要配置
   blackList: ["app.localStorage.set"], // 可选，需要标记的黑名单api，默认为空数组
   browserApis: ["window", "document", "history", "location"], // 可选，要分析的BrowserApi，默认为空数组
   reportDir: "report", // 可选，生成代码分析报告的目录，默认为'report',不支持多级目录配置
